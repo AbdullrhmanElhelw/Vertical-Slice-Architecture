@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>IAuditableEntity Interface</Title>
+			<Shortcut>iauditable</Shortcut>
+			<Description>Creates a basic interface for auditable entities.</Description>
+			<Author>YourName</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>createdOnUtcType</ID>
+					<ToolTip>Replace with the type for the CreatedOnUtc property</ToolTip>
+					<Default>DateTime</Default>
+				</Literal>
+				<Literal>
+					<ID>modifiedOnUtcType</ID>
+					<ToolTip>Replace with the type for the ModifiedOnUtc property</ToolTip>
+					<Default>DateTime?</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[public interface IAuditableEntity
+{
+    $createdOnUtcType$ CreatedOnUtc { get; }
+
+    $modifiedOnUtcType$ ModifiedOnUtc { get; }
+}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

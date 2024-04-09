@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Entity Class</Title>
+			<Shortcut>entity</Shortcut>
+			<Description>Creates a basic abstract class for entities with identity and equality logic.</Description>
+			<Author>YourName</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>idType</ID>
+					<ToolTip>Replace with the type for the Id property</ToolTip>
+					<Default>Guid</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[public abstract class Entity : IEquatable<Entity>
+{
+    protected Entity()
+    {
+        Id = $idType$.NewGuid();
+    }
+
+    public $idType$ Id { get; protected set; }
+
+    public bool Equals(Entity? other)
+    {
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return Id.Equals(other.Id);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((Entity)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return Id.GetHashCode() ^ 31;
+    }
+}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
